@@ -1,7 +1,7 @@
-import { env } from "@/config/env"
-import { logger } from "@/utils/logger"
 import express from "express"
 import type { Application } from "express"
+import { env } from "@/config/env"
+import { logger } from "@/utils/logger"
 
 export class Server {
   private app: Application = express()
