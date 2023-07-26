@@ -25,7 +25,7 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
-    "no-console": 1,
+    "no-console": 2,
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
