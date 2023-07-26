@@ -1,0 +1,29 @@
+{
+  "ts-node": {
+    "swc": true,
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "outDir": "dist",
+    "lib": ["esnext", "DOM"],
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
