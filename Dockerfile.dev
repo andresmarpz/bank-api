@@ -17,11 +17,8 @@ RUN pnpm install
 # Copy the rest of the application code to the container
 COPY . .
 
-# Build the application
-RUN pnpm build
-
 # Set the environment variable to production
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 # Start the application
 CMD ["pnpm", "dev"]
