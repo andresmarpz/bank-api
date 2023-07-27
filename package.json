@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "author": "andresmarpz",
   "scripts": {
-    "dev": "ts-node src/index.ts | pino-pretty --colorize"
+    "dev": "ts-node src/index.ts | pino-pretty --colorize",
+    "dev:up": "docker-compose up -d"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "nodemon": "^3.0.1",
     "pino-pretty": "^10.2.0",
     "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
