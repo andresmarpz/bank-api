@@ -2,6 +2,7 @@ import { numeric, pgTable, serial } from "drizzle-orm/pg-core"
 import { InferModel, relations } from "drizzle-orm"
 import { baseEntity } from "@/db/schema/base.entity"
 import { users } from "@/db/schema/user.entity"
+import { transactions } from "@/db/schema/transaction.entity"
 
 export const accounts = pgTable("accounts", {
   ...baseEntity,
@@ -12,11 +13,12 @@ export const accounts = pgTable("accounts", {
   ownerId: baseEntity.id,
 })
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
+export const accountsRelations = relations(accounts, ({ one, many }) => ({
   user: one(users, {
     fields: [accounts.ownerId],
     references: [users.id],
   }),
+  transactions: many(transactions),
 }))
 
 export type Account = InferModel<typeof accounts>
