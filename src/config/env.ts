@@ -2,11 +2,27 @@ import dotenv from "dotenv"
 import { z } from "zod"
 
 // load .env files
-dotenv.config()
+dotenv.config({ path: ".env.local" })
 
 const schema = z.object({
-  PORT: z.number().default(4000),
-  ENVIRONMENT: z.string().default("development"),
+  PORT: z
+    .preprocess(
+      (port) => parseInt(port as string, 10),
+      z.number().positive().max(10000)
+    )
+    .default(4000),
+  ENVIRONMENT: z.string(),
+
+  POSTGRES_HOST: z.string().default("localhost"),
+  POSTGRES_PORT: z
+    .preprocess(
+      (port) => parseInt(port as string, 10),
+      z.number().positive().max(10000)
+    )
+    .default(5432),
+  POSTGRES_USER: z.string(),
+  POSTGRES_PASSWORD: z.string(),
+  POSTGRES_DB: z.string(),
 })
 
 export const env = (() => schema.parse(process.env))()
