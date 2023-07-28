@@ -3,6 +3,7 @@ import { InferModel, relations } from "drizzle-orm"
 import { baseEntity } from "@/db/schema/base.entity"
 import { users } from "@/db/schema/user.entity"
 import { transactions } from "@/db/schema/transaction.entity"
+import { currencies } from "@/db/schema/currency.entity"
 
 export const accounts = pgTable("accounts", {
   ...baseEntity,
@@ -11,6 +12,7 @@ export const accounts = pgTable("accounts", {
   // infers as a javascript number and supports between 2^31 and 2^53
   balance: numeric("balance", { precision: 24, scale: 2 }),
   ownerId: baseEntity.id,
+  currencyId: baseEntity.id,
 })
 
 export const accountsRelations = relations(accounts, ({ one, many }) => ({
@@ -19,6 +21,10 @@ export const accountsRelations = relations(accounts, ({ one, many }) => ({
     references: [users.id],
   }),
   transactions: many(transactions),
+  currency: one(currencies, {
+    fields: [accounts.currencyId],
+    references: [currencies.id],
+  }),
 }))
 
 export type Account = InferModel<typeof accounts>
