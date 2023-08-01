@@ -11,7 +11,6 @@ const schema = z.object({
       z.number().positive().max(10000)
     )
     .default(4000),
-  ENVIRONMENT: z.string(),
 
   POSTGRES_HOST: z.string().default("localhost"),
   POSTGRES_PORT: z
