@@ -4,7 +4,12 @@ import { baseEntity } from "@/db/schema/base.entity"
 import { accounts } from "@/db/schema/account.entity"
 import { currencyHistories } from "@/db/schema/currencyhistory.entity"
 
-const currenciesEnum = pgEnum("currencies_name", ["USD", "EUR", "UYU", "CAD"])
+export const currenciesEnum = pgEnum("currencies_name", [
+  "USD",
+  "EUR",
+  "UYU",
+  "CAD",
+])
 
 export const currencies = pgTable("currencies", {
   ...baseEntity,
