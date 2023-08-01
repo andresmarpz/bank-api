@@ -14,10 +14,12 @@ export const transactions = pgTable("transactions", {
 
 export const transactionsRelations = relations(transactions, ({ one }) => ({
   fromAccount: one(accounts, {
+    relationName: "fromAccount",
     fields: [transactions.fromAccountId],
     references: [accounts.id],
   }),
   toAccount: one(accounts, {
+    relationName: "toAccount",
     fields: [transactions.toAccountId],
     references: [accounts.id],
   }),
