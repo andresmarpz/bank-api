@@ -6,10 +6,10 @@ import { sessions } from "@/db/schema/session.entity"
 
 export const users = pgTable("users", {
   ...baseEntity,
-  email: text("email"),
-  password: text("password"),
-  firstName: text("first_name"),
-  lastName: text("last_name"),
+  email: text("email").notNull(),
+  password: text("password").notNull(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
 })
 
 export const usersRelations = relations(users, ({ many }) => ({
