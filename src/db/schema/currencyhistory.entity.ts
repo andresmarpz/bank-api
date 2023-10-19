@@ -3,7 +3,7 @@ import { pgTable } from "drizzle-orm/pg-core"
 import { baseEntity } from "@/db/schema/base.entity"
 import { currencies } from "@/db/schema/currency.entity"
 
-export const currencyHistories = pgTable("currency_histories", {
+export const currencyHistories = pgTable("currencies_history", {
   ...baseEntity,
   currencyId: baseEntity.id,
   value: baseEntity.id,
