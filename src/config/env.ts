@@ -5,6 +5,7 @@ import { z } from "zod"
 dotenv.config({ path: ".env.local" })
 
 const schema = z.object({
+  ENVIRONMENT: z.enum(["development", "production"]).default("development"),
   PORT: z
     .preprocess(
       (port) => parseInt(port as string, 10),
@@ -12,7 +13,7 @@ const schema = z.object({
     )
     .default(4000),
 
-  POSTGRES_HOST: z.string().default("localhost"),
+  POSTGRES_HOST: z.string().default("postgres"),
   POSTGRES_PORT: z
     .preprocess(
       (port) => parseInt(port as string, 10),
